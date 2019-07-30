@@ -6,16 +6,15 @@
     <script type="text/javascript">
     $(document).ready(function() {
         $("#insert").click(function() {
-            var id_produk= $("#id_produk").val();
-            var nm_produk = $("#nm_produk").val();
-			var stok = $("#stok").val();
-			var warna = $("#warna").val();
-            var penyimpanan = $("#penyimpanan").val();
-            var ram = $("#ram").val();
-            var harga = $("#harga").val();
+            var id_pasien= $("#id_pasien").val();
+            var nama_pasien = $("#nama_pasien").val();
+			var jenis_kelamin = $("#jenis kelamin").val();
+			var alamat = $("#alamat").val();
+            var nomor_telepon = $("#nomor_telepon").val();
+          
             
-            var dataString = "id_produk=" + id_produk + "&nm_produk=" + nm_produk +"&stok=" + stok +  "&warna=" + warna + "&penyimpanan=" + penyimpanan +"&ram=" + ram +"&harga=" + harga +  "&insert=";
-            if ($.trim(id_produk).length > 0 & $.trim(nm_produk).length > 0  & $.trim(stok).length > 0 & $.trim(warna).length > 0  & $.trim(penyimpanan).length > 0 & $.trim(ram).length > 0 & $.trim(harga).length > 0) {
+            var dataString = "id_pasien=" + id_pasien + "&nama_pasien=" + nama_pasien +"&jenis_kelamin=" + jenis_kelamin +  "&alamat=" + alamat + "&nomor_telepon=" + nomor_telepon  +  "&insert=";
+            if ($.trim(id_produk).length > 0 & $.trim(nama_pasien).length > 0  & $.trim(jenis_kelamin).length > 0 & $.trim(alamat).length > 0  & $.trim(no_telepon).length > 0  {
                 $.ajax({
                     type: "POST",
                     url: "https://alyara.000webhostapp.com/appcordova/www/insert.php",
@@ -43,7 +42,7 @@
 
 <body>
     <div class="bar bar-header bar-positive" style="margin-bottom:80px;">
-        <h1 class="title">Pendataan PhoneShop</h1>
+        <h1 class="title">Pendataan Pasien</h1>
         <a class="button button-clear" href="readjson.html">Lihat Data</a>
         <a class="button button-clear" href="json.php">Lihat JSON</a>
     </div>
@@ -53,54 +52,22 @@
     <div class="list">
   
         <div class="item">
-            <label>Nama Produk</label>
-            <input type="text" id="nm_produk" value="" />
+            <label>Nama Pasien</label>
+            <input type="text" id="nama_pasien" value="" />
         </div>
         <div class="item">
-            <label>Stok</label>
-            <input type="text" id="stok" value="" />
+            <label>jenis kelamin</label>
+            <input type="text" id="jenis_kelamin" value="" />
         </div>
-
+<div class="item">
+            <label>alamat</label>
+            <input type="text" id="alamat" value="" />
+        </div>
         <div class="item">
-        <label>Pilih Warna :
-        <select id="warna">
-          <option value="Black">Black</option>
-          <option value="Red">Red</option>
-          <option value="Blue">Blue</option>
-          <option value="Gold">Gold</option>
-          <option value="Silver">Silver</option>
-          
-        </select>
-      </label>
-      </div>
-
-	  <div class="item">
-        <label>Ruang Penyimpanan :
-        <select id="penyimpanan">
-          <option value="16">16</option>
-          <option value="32">32</option>
-          <option value="64">64</option>
-          <option value="128">128</option>
-          <option value="256">256</option>
-        </select>
-      </label>
-      </div>
-	  <div class="item">
-        <label>Kapasitas RAM :
-        <select id="ram">
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="6">6</option>
-          <option value="8">8</option>
-        </select>
-      </label>
-      </div>	  
+            <label>nomor telepon</label>
+            <input type="text" id="nomor_telepon" value="" />
+        </div>
     
-	 <div class="item">
-            <label>Harga</label>
-            <input type="text" id="harga" value="" />
-        </div>
         
         <div class="item">
             <input type="button" id="insert" class="button button-block" value="Insert" />
