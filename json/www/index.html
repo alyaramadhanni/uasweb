@@ -1,0 +1,113 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/ionic.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#insert").click(function() {
+            var id_produk= $("#id_produk").val();
+            var nm_produk = $("#nm_produk").val();
+			var stok = $("#stok").val();
+			var warna = $("#warna").val();
+            var penyimpanan = $("#penyimpanan").val();
+            var ram = $("#ram").val();
+            var harga = $("#harga").val();
+            
+            var dataString = "id_produk=" + id_produk + "&nm_produk=" + nm_produk +"&stok=" + stok +  "&warna=" + warna + "&penyimpanan=" + penyimpanan +"&ram=" + ram +"&harga=" + harga +  "&insert=";
+            if ($.trim(id_produk).length > 0 & $.trim(nm_produk).length > 0  & $.trim(stok).length > 0 & $.trim(warna).length > 0  & $.trim(penyimpanan).length > 0 & $.trim(ram).length > 0 & $.trim(harga).length > 0) {
+                $.ajax({
+                    type: "POST",
+                    url: "https://alyara.000webhostapp.com/appcordova/www/insert.php",
+                    data: dataString,
+                    crossDomain: true,
+                    cache: false,
+                    beforeSend: function() {
+                        $("#insert").val('Connecting...');
+                    },
+                    success: function(data) {
+                        if (data == "success") {
+                            alert("inserted");
+                            $("#insert").val('submit');
+                        } else if (data == "error") {
+                            alert("error");
+                        }
+                    }
+                });
+            }
+            return false;
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <div class="bar bar-header bar-positive" style="margin-bottom:80px;">
+        <h1 class="title">Pendataan PhoneShop</h1>
+        <a class="button button-clear" href="readjson.html">Lihat Data</a>
+        <a class="button button-clear" href="json.php">Lihat JSON</a>
+    </div>
+    <br/>
+    <br/>
+   
+    <div class="list">
+  
+        <div class="item">
+            <label>Nama Produk</label>
+            <input type="text" id="nm_produk" value="" />
+        </div>
+        <div class="item">
+            <label>Stok</label>
+            <input type="text" id="stok" value="" />
+        </div>
+
+        <div class="item">
+        <label>Pilih Warna :
+        <select id="warna">
+          <option value="Black">Black</option>
+          <option value="Red">Red</option>
+          <option value="Blue">Blue</option>
+          <option value="Gold">Gold</option>
+          <option value="Silver">Silver</option>
+          
+        </select>
+      </label>
+      </div>
+
+	  <div class="item">
+        <label>Ruang Penyimpanan :
+        <select id="penyimpanan">
+          <option value="16">16</option>
+          <option value="32">32</option>
+          <option value="64">64</option>
+          <option value="128">128</option>
+          <option value="256">256</option>
+        </select>
+      </label>
+      </div>
+	  <div class="item">
+        <label>Kapasitas RAM :
+        <select id="ram">
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="6">6</option>
+          <option value="8">8</option>
+        </select>
+      </label>
+      </div>	  
+    
+	 <div class="item">
+            <label>Harga</label>
+            <input type="text" id="harga" value="" />
+        </div>
+        
+        <div class="item">
+            <input type="button" id="insert" class="button button-block" value="Insert" />
+        </div>
+      
+    </div>
+     
+</body>
+
+</html>
