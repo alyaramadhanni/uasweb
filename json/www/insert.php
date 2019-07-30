@@ -3,14 +3,14 @@
  if(isset($_POST['insert']))
  {
  
-$nim=$_POST['nim'];
- $nama=$_POST['nama'];
- $progdi=$_POST['progdi'];
-  $sertif=$_POST['sertif'];
- $email=$_POST['email'];
-   $nohp=$_POST['nohp'];
+$id_pasien=$_POST['id_pasien'];
+ $nama_pasien=$_POST['nama_pasien'];
+ $jenis_kelamin=$_POST['jenis_kelamin'];
+  $alamat=$_POST['alamat'];
+ $nomor_telepon=$_POST['nomor_telepon'];
+ 
    
- $q=mysqli_query($con,"INSERT INTO `data_mhs` (`nim`,`nama`,`progdi`,`sertif`,`email`,`nohp`) VALUES ('$nim','$nama','$progdi','$sertif','$email','$nohp')");
+ $q=mysqli_query($con,"INSERT INTO `tbl_pasien` (`id_pasien`,`nama_pasien`,`jenis_kelamin`,`alamat`,`nomor_telepon`) VALUES ('$id_pasien','$nama_pasien','$jenis_kelamin','$alamat','$nomor_telepon')");
  if($q)
   echo "success";
  else
